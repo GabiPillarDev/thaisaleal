@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Comunidade Leal — Tráfego Pago</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #1A1D23;
+    --surface: #22262E;
+    --surface-2: #2A2F38;
+    --line: #363B46;
+    --text: #ECE9E3;
+    --muted: #9297A3;
+    --accent: #D9622B;
+    --accent-soft: #D9622B33;
+    --teal: #52A79C;
+    --warn: #D9A62B;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Inter', sans-serif;
+    padding:32px 20px 64px;
+  }
+  .wrap{max-width:1080px;margin:0 auto;}
+
+  header{margin-bottom:36px;}
+  .eyebrow{color:var(--accent);font-size:13px;font-weight:600;letter-spacing:0.02em;margin-bottom:6px;}
+  h1{
+    font-family:'Space Grotesk', sans-serif;
+    font-size:clamp(28px,4vw,38px);
+    font-weight:700;
+    margin:0 0 8px;
+    line-height:1.1;
+  }
+  .sub{color:var(--muted);font-size:15px;max-width:560px;line-height:1.5;}
+
+  .note{
+    background:var(--surface);
+    border-left:3px solid var(--warn);
+    padding:14px 18px;
+    border-radius:6px;
+    font-size:14px;
+    color:var(--text);
+    margin:20px 0 36px;
+    line-height:1.5;
+  }
+  .note b{color:var(--warn);}
+
+  .kpi-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+    gap:14px;
+    margin-bottom:40px;
+  }
+  .kpi{
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:18px 20px;
+  }
+  .kpi .label{font-size:12.5px;color:var(--muted);margin-bottom:8px;}
+  .kpi .value{font-family:'Space Grotesk',sans-serif;font-size:26px;font-weight:600;}
+  .kpi .value.accent{color:var(--accent);}
+  .kpi .meta{font-size:12px;color:var(--muted);margin-top:4px;}
+
+  section{margin-bottom:48px;}
+  h2{
+    font-family:'Space Grotesk',sans-serif;
+    font-size:19px;
+    font-weight:600;
+    margin:0 0 4px;
+  }
+  .section-sub{color:var(--muted);font-size:13.5px;margin-bottom:18px;}
+
+  .grid-2{display:grid;grid-template-columns:1.1fr 1fr;gap:20px;}
+  @media(max-width:760px){.grid-2{grid-template-columns:1fr;}}
+
+  .card{
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:22px;
+  }
+
+  .funnel{display:flex;flex-direction:column;gap:2px;}
+  .funnel-row{
+    display:grid;
+    grid-template-columns:130px 1fr 90px;
+    align-items:center;
+    gap:12px;
+    padding:10px 0;
+  }
+  .funnel-row .stage{font-size:13px;color:var(--muted);}
+  .funnel-bar-track{background:var(--surface-2);border-radius:5px;height:26px;position:relative;overflow:hidden;}
+  .funnel-bar{
+    height:100%;
+    background:var(--accent);
+    border-radius:5px;
+    display:flex;align-items:center;
+    padding-left:10px;
+    font-size:12.5px;
+    font-weight:600;
+    color:#1A1D23;
+  }
+  .funnel-row .pct{font-size:13px;color:var(--text);text-align:right;font-weight:500;}
+
+  table{width:100%;border-collapse:collapse;font-size:13.5px;}
+  th{
+    text-align:left;
+    color:var(--muted);
+    font-weight:500;
+    font-size:12px;
+    padding:0 12px 10px 0;
+    border-bottom:1px solid var(--line);
+  }
+  td{padding:11px 12px 11px 0;border-bottom:1px solid var(--line);}
+  tr:last-child td{border-bottom:none;}
+  td.num{text-align:right;font-variant-numeric:tabular-nums;}
+  th.num{text-align:right;}
+  .tag{
+    display:inline-block;
+    font-size:11px;
+    padding:2px 8px;
+    border-radius:20px;
+    background:var(--accent-soft);
+    color:var(--accent);
+    font-weight:600;
+  }
+  .tag.cold{background:#52A79C33;color:var(--teal);}
+
+  .chart-box{position:relative;height:220px;}
+
+  .footer-note{color:var(--muted);font-size:12px;margin-top:8px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="eyebrow">COMUNIDADE LEAL · TRÁFEGO PAGO</div>
+    <h1>Panorama de campanhas — Setembro</h1>
+    <div class="sub">Meta Ads. Programa Start 25 e campanhas de captação de seguidores (público frio), com início recente de investimento voltado à Comunidade Leal.</div>
+  </header>
+
+  <div class="note">
+    <b>Contexto do período:</b> CPM em R$13,84, em alta por conta do período eleitoral, o que pressiona o custo de aquisição em todas as campanhas ativas.
+  </div>
+
+  <div class="kpi-grid">
+    <div class="kpi">
+      <div class="label">Investimento total (mês)</div>
+      <div class="value">R$ 507,78</div>
+    </div>
+    <div class="kpi">
+      <div class="label">Vendas Start 25</div>
+      <div class="value accent">5</div>
+      <div class="meta">CPA médio R$ 70,91</div>
+    </div>
+    <div class="kpi">
+      <div class="label">Alcance total</div>
+      <div class="value">23.914</div>
+    </div>
+    <div class="kpi">
+      <div class="label">Seguidores captados</div>
+      <div class="value">78</div>
+      <div class="meta">via carrossel, R$1,29 por seguidor</div>
+    </div>
+    <div class="kpi">
+      <div class="label">CPM</div>
+      <div class="value">R$ 13,84</div>
+      <div class="meta">em alta, período eleitoral</div>
+    </div>
+    <div class="kpi">
+      <div class="label">CPC médio</div>
+      <div class="value">R$ 0,22</div>
+    </div>
+  </div>
+
+  <section>
+    <h2>Funil de conversão</h2>
+    <div class="section-sub">Do clique no anúncio até a compra efetivada, mês corrente</div>
+    <div class="card">
+      <div class="funnel" id="funnel"></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Investimento por campanha</h2>
+    <div class="section-sub">Distribuição do investimento total de R$ 507,78 entre as frentes ativas</div>
+    <div class="grid-2">
+      <div class="card" style="display:flex;align-items:center;justify-content:center;">
+        <div id="spendDonut"></div>
+      </div>
+      <div class="card">
+        <table>
+          <thead>
+            <tr><th>Campanha</th><th class="num">Investido</th></tr>
+          </thead>
+          <tbody id="spendTable"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>CTR por campanha</h2>
+    <div class="section-sub">Referência de mercado: acima de 1% já é considerado bom</div>
+    <div class="card">
+      <div id="ctrBars"></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Detalhamento das campanhas</h2>
+    <div class="card">
+      <table>
+        <thead>
+          <tr>
+            <th>Campanha</th>
+            <th>Público</th>
+            <th class="num">Investido</th>
+            <th class="num">CTR</th>
+            <th class="num">Resultado</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Vendas Start 25 — A</td>
+            <td><span class="tag">Quente/Frio</span></td>
+            <td class="num">R$ 169,02</td>
+            <td class="num">3,14%</td>
+            <td class="num">parte das 5 vendas</td>
+          </tr>
+          <tr>
+            <td>Vendas Start 25 — B</td>
+            <td><span class="tag">Quente/Frio</span></td>
+            <td class="num">R$ 185,52</td>
+            <td class="num">1,97% / 2,56%</td>
+            <td class="num">parte das 5 vendas</td>
+          </tr>
+          <tr>
+            <td>Nova campanha (teste)</td>
+            <td><span class="tag">Frio</span></td>
+            <td class="num">R$ 13,98</td>
+            <td class="num">—</td>
+            <td class="num">aguardando 1ª venda</td>
+          </tr>
+          <tr>
+            <td>Carrossel — captação</td>
+            <td><span class="tag cold">Frio</span></td>
+            <td class="num">R$ 101,02</td>
+            <td class="num">12,8%</td>
+            <td class="num">78 seguidores</td>
+          </tr>
+          <tr>
+            <td>Captação — B</td>
+            <td><span class="tag cold">Frio</span></td>
+            <td class="num">R$ 38,24</td>
+            <td class="num">—</td>
+            <td class="num">seguidores</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="footer-note">Soma das campanhas acima: R$ 507,78 · confirmado com o investimento total do mês.</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Últimos 7 dias</h2>
+    <div class="section-sub">Recorte mais recente, referência de CPA em subida</div>
+    <div class="card">
+      <table>
+        <thead>
+          <tr><th>Campanha</th><th class="num">Investido</th><th class="num">Vendas</th><th class="num">CPA</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Vendas Start 25</td>
+            <td class="num">R$ 129,00</td>
+            <td class="num">2</td>
+            <td class="num">R$ 64,86</td>
+          </tr>
+          <tr>
+            <td>Nova campanha (nova estratégia)</td>
+            <td class="num">R$ 13,98</td>
+            <td class="num">0</td>
+            <td class="num">aguardando</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+</div>
+
+<script>
+// Funil (built manually as bars, proportional)
+const funnelData = [
+  { stage: 'Cliques no link', value: 2329 },
+  { stage: 'Abertura (Camp. A)', value: 114 },
+  { stage: 'Abertura (Camp. B)', value: 83 },
+  { stage: 'Checkout iniciado', value: 22 },
+  { stage: 'Compra efetivada', value: 5 },
+];
+const maxVal = funnelData[0].value;
+const funnelEl = document.getElementById('funnel');
+funnelData.forEach(row => {
+  const pct = ((row.value / maxVal) * 100).toFixed(1);
+  const div = document.createElement('div');
+  div.className = 'funnel-row';
+  div.innerHTML = `
+    <div class="stage">${row.stage}</div>
+    <div class="funnel-bar-track">
+      <div class="funnel-bar" style="width:${pct}%">${row.value.toLocaleString('pt-BR')}</div>
+    </div>
+    <div class="pct">${pct}%</div>
+  `;
+  funnelEl.appendChild(div);
+});
+
+// Spend breakdown
+const spend = [
+  { name: 'Vendas Start 25 — A', value: 169.02, color: '#D9622B' },
+  { name: 'Vendas Start 25 — B', value: 185.52, color: '#E8804F' },
+  { name: 'Nova campanha (teste)', value: 13.98, color: '#D9A62B' },
+  { name: 'Carrossel — captação', value: 101.02, color: '#52A79C' },
+  { name: 'Captação — B', value: 38.24, color: '#7BC4BA' },
+];
+
+// --- Doughnut chart (pure SVG) ---
+(function drawDonut(){
+  const total = spend.reduce((a,s) => a + s.value, 0);
+  const size = 200, r = 80, cx = size/2, cy = size/2, strokeW = 30;
+  const circ = 2 * Math.PI * r;
+  let offset = 0;
+  let segments = '';
+  spend.forEach(s => {
+    const frac = s.value / total;
+    const len = frac * circ;
+    segments += `<circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="${s.color}"
+      stroke-width="${strokeW}" stroke-dasharray="${len} ${circ - len}"
+      stroke-dashoffset="${-offset}" transform="rotate(-90 ${cx} ${cy})"/>`;
+    offset += len;
+  });
+  const svg = `<svg width="${size}" height="${size}" viewBox="0 0 ${size} ${size}">
+    ${segments}
+    <text x="${cx}" y="${cy-4}" text-anchor="middle" fill="#ECE9E3" font-family="Space Grotesk, sans-serif" font-size="20" font-weight="700">R$ ${total.toFixed(2).replace('.',',')}</text>
+    <text x="${cx}" y="${cy+16}" text-anchor="middle" fill="#9297A3" font-family="Inter, sans-serif" font-size="11">investido no mês</text>
+  </svg>`;
+  document.getElementById('spendDonut').innerHTML = svg;
+})();
+
+const spendTable = document.getElementById('spendTable');
+spend.forEach(s => {
+  const tr = document.createElement('tr');
+  tr.innerHTML = `<td><span style="display:inline-block;width:9px;height:9px;border-radius:2px;background:${s.color};margin-right:8px;"></span>${s.name}</td><td class="num">R$ ${s.value.toFixed(2).replace('.',',')}</td>`;
+  spendTable.appendChild(tr);
+});
+
+// --- CTR bar chart (pure SVG) ---
+(function drawCtrBars(){
+  const data = [
+    { label: 'Vendas Start 25 — A', value: 3.14, color: '#D9622B' },
+    { label: 'Vendas Start 25 — B (1)', value: 1.97, color: '#E8804F' },
+    { label: 'Vendas Start 25 — B (2)', value: 2.56, color: '#E8804F' },
+    { label: 'Carrossel — captação', value: 12.8, color: '#52A79C' },
+  ];
+  const max = Math.max(...data.map(d => d.value));
+  const rows = data.map(d => {
+    const pct = (d.value / max * 100).toFixed(1);
+    return `
+      <div class="funnel-row" style="grid-template-columns:170px 1fr 60px;">
+        <div class="stage">${d.label}</div>
+        <div class="funnel-bar-track">
+          <div class="funnel-bar" style="width:${pct}%;background:${d.color};"></div>
+        </div>
+        <div class="pct">${d.value.toFixed(2).replace('.',',')}%</div>
+      </div>`;
+  }).join('');
+  document.getElementById('ctrBars').innerHTML = `<div class="funnel">${rows}</div>`;
+})();
+</script>
+</body>
+</html>
