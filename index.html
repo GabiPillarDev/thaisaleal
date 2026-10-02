@@ -84,12 +84,10 @@ h2{font-size:20px;margin:40px 0 4px}
 .proj h4{font-size:14px;margin:0 0 10px}
 
 /* Criativos */
-.criativos{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px}
-.cri{position:relative}
-.cri .img{aspect-ratio:4/5;border-radius:10px;background:var(--placeholder);border:1px dashed var(--line);display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:12px;text-align:center;padding:8px;overflow:hidden}
-.cri .img img{width:100%;height:100%;object-fit:cover;display:block}
-.cri .rank{position:absolute;top:8px;left:8px;background:var(--brand);color:var(--brand-ink);font-weight:700;font-size:12px;border-radius:999px;padding:2px 9px}
-.cri .nm{font-size:13px;font-weight:500;margin-top:6px;line-height:1.35}
+.criativos{display:flex;flex-direction:column;gap:8px;margin:0;padding:0;list-style:none}
+.cri{display:flex;align-items:center;gap:12px;background:var(--bg);border-radius:10px;padding:10px 12px}
+.cri .rank{background:var(--brand);color:var(--brand-ink);font-weight:700;font-size:13px;border-radius:999px;min-width:34px;text-align:center;padding:2px 8px}
+.cri .nm{font-size:14px;font-weight:500}
 
 /* Tabelas */
 .tbl-wrap{overflow-x:auto}
@@ -151,7 +149,7 @@ footer{color:var(--muted);font-size:12px;margin-top:32px}
     <div class="ins good">
       <div class="k"><b>✓</b>Destaque</div>
       <h4>Start 25 fechou com 10 vendas</h4>
-      <p>Com R$ 699,82 investidos, o projeto trouxe R$ 990 em vendas. Cada venda custou cerca de R$ 70.</p>
+      <p>Com R$ 699,82 investidos, cada venda custou cerca de R$ 70.</p>
     </div>
     <div class="ins bad">
       <div class="k"><b>✕</b>Não funcionou</div>
@@ -179,18 +177,16 @@ footer{color:var(--muted);font-size:12px;margin-top:32px}
 /* ===== Dados de setembro/2026 ===== */
 const RESUMO = { investimento:1351.51, alcance:37921, cpm:18.17, ctr:8.22, visualizacoes:561, seguidores:105 };
 
-/* Projetos de vendas.
-   Para colocar a imagem de um criativo, preencha "img" com o caminho do arquivo,
-   por exemplo: img:"criativos/comissao.jpg" */
+/* Projetos de vendas */
 const PROJETOS = [
   {
     nome:"Start 25", cor:"var(--g-start)",
     desc:"Série de testes de público, criativos e formatos para as vendas do programa.",
     investimento:699.82, vendas:10, faturamento:990,
     criativos:[
-      {nome:"Eu faria se eu tivesse comissão", img:""},
-      {nome:"Prato de comida", img:""},
-      {nome:"Compulsão por doce", img:""}
+      {nome:"Eu faria se eu tivesse comissão"},
+      {nome:"Prato de comida"},
+      {nome:"Compulsão por doce"}
     ]
   },
   {
@@ -198,7 +194,7 @@ const PROJETOS = [
     desc:"Campanhas de vendas para o público quente da comunidade.",
     investimento:345.49, vendas:2, faturamento:994,
     criativos:[
-      {nome:"Quebra-cabeça", img:""}
+      {nome:"Quebra-cabeça"}
     ]
   }
 ];
@@ -237,7 +233,6 @@ const totFat = PROJETOS.reduce((a,p)=>a+p.faturamento,0);
 const kpis = [
   {l:"Investimento", v:brl(RESUMO.investimento), n:"Total do mês", hero:true},
   {l:"Vendas", v:totVendas, n:PROJETOS.map(p=>`${p.vendas} ${p.nome}`).join(" · "), hero:true},
-  {l:"Faturamento", v:brl(totFat), n:"Start 25 + Comunidade Leal"},
   {l:"Novos seguidores", v:num(RESUMO.seguidores), n:"Vindos dos anúncios"},
   {l:"Alcance", v:num(RESUMO.alcance), n:"Pessoas únicas"},
   {l:"Visualizações da página", v:num(RESUMO.visualizacoes), n:"Página de vendas"},
@@ -264,12 +259,7 @@ GRUPOS.forEach(g=>{
 /* ===== Projetos ===== */
 document.getElementById("projetos").innerHTML = PROJETOS.map(p=>{
   const roas = p.faturamento / p.investimento;
-  const cris = p.criativos.map((c,i)=>`
-    <div class="cri">
-      <div class="img">${c.img ? `<img src="${c.img}" alt="${c.nome}">` : "Imagem do criativo"}</div>
-      <span class="rank">${i+1}º</span>
-      <div class="nm">${c.nome}</div>
-    </div>`).join("");
+  const cris = p.criativos.map((c,i)=>`<li class="cri"><span class="rank">${i+1}º</span><span class="nm">${c.nome}</span></li>`).join("");
   return `
   <article class="proj" style="--c:${p.cor}">
     <span class="tag">Projeto</span>
@@ -283,7 +273,7 @@ document.getElementById("projetos").innerHTML = PROJETOS.map(p=>{
       <div class="num"><div class="l">Retorno (ROAS)</div><div class="v ${roas>=1?"pos":""}">${dec(roas)}x</div></div>
     </div>
     <h4>${p.criativos.length>1 ? "Melhores criativos" : "Melhor criativo"}</h4>
-    <div class="criativos">${cris}</div>
+    <ol class="criativos">${cris}</ol>
   </article>`;
 }).join("");
 
