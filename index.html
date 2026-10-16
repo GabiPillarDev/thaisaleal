@@ -108,6 +108,15 @@ h2{font-size:20px;margin:40px 0 4px}
 .var{font-size:12px;font-weight:700;margin-left:6px}
 .var{color:var(--text-2)} .var.up{color:var(--good)} .var.down{color:var(--bad)}
 
+/* Criativos */
+.proj h4{font-size:14px;margin:24px 0 10px}
+.cri{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.cri li{display:flex;align-items:center;gap:10px;background:var(--bg);border-radius:10px;padding:10px 12px}
+.cri .rank{background:var(--c);color:#fff;font-weight:700;font-size:12px;border-radius:999px;min-width:32px;text-align:center;padding:2px 8px}
+.cri .nm{font-size:14px;font-weight:500;flex:1}
+.cri .nm small{display:block;font-weight:400;font-size:12px;color:var(--text-2)}
+.cri .novo{font-size:11px;font-weight:700;color:var(--c);border:1px solid var(--c);border-radius:999px;padding:1px 8px}
+
 /* Tabela */
 .tbl-wrap{overflow-x:auto}
 table{width:100%;border-collapse:collapse;font-size:13px;font-variant-numeric:tabular-nums}
@@ -228,6 +237,11 @@ const PRODUTOS = [
     funil:{ alcance:3112, cliques:78, pagina:54, checkout:5, compras:0 } },
   { nome:"Comunidade Leal", cor:"var(--c-cl)", desc:"5 vendas na semana, 2 delas com participação do tráfego.",
     investimento:363.99, cpm:24.90, vendas:2,
+    criativosTitulo:"Criativos que venderam",
+    criativos:[
+      {nome:"Uma das piores coisas"},
+      {nome:"Estou a um ano tentando de tudo", det:"Caixinha de perguntas", novo:true}
+    ],
     funil:{ alcance:8208, cliques:189, pagina:142, checkout:17, compras:2 } }
 ];
 
@@ -308,7 +322,8 @@ document.getElementById("produtos").innerHTML = PRODUTOS.map((p,i)=>{
       <div class="num"><div class="l">Custo por checkout</div><div class="v">${brl(p.investimento/f.checkout)}</div></div>
       <div class="num"><div class="l">Visitas à página</div><div class="v">${num(f.pagina)}</div></div>
     </div>
-    <div class="funil" data-i="${i}"></div></article>`;
+    <div class="funil" data-i="${i}"></div>
+    ${p.criativos ? `<h4>${p.criativosTitulo}</h4><ol class="cri">${p.criativos.map((c,j)=>`<li><span class="rank">${j+1}º</span><span class="nm">${c.nome}${c.det?`<small>${c.det}</small>`:""}</span>${c.novo?`<span class="novo">Novo</span>`:""}</li>`).join("")}</ol>` : ""}</article>`;
 }).join("");
 document.querySelectorAll("#produtos .funil").forEach(el=>{ const p = PRODUTOS[el.dataset.i]; desenhaFunil(el, p.funil, p.investimento, p.cor); });
 
