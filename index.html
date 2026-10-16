@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Funis Thaisa Leal · 2 a 8 de outubro</title>
+<title>Comunidade Leal · 9 a 15 de outubro</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap" rel="stylesheet">
 <style>
@@ -11,20 +11,23 @@
   --brand:#E57437; --brand-ink:#F1DBAC;
   --bg:#FBF7F1; --surface:#FFFFFF; --line:#EDE4D8;
   --text:#2B1F17; --text-2:#6B5A4D; --muted:#9A8A7C;
-  --c-start:#eb6834; --c-cl:#2a78d6; --soft:#F6EEE4;
+  --c-start:#eb6834; --c-cl:#2a78d6; --c-seg:#1baf7a; --c-dist:#eda100; --c-reels:#e87ba4;
+  --c-prev:#B9AA9C; --soft:#F6EEE4; --track:#F3ECE3;
   --good:#008300; --bad:#d03b3b;
 }
 @media (prefers-color-scheme:dark){
   :root:not([data-theme="light"]){
     --bg:#16120F; --surface:#211B17; --line:#352C25;
     --text:#FFFFFF; --text-2:#CFC3B7; --muted:#998B7E;
-    --c-start:#d95926; --c-cl:#3987e5; --soft:#2A221C; --good:#3fb950; --bad:#f06a6a;
+    --c-start:#d95926; --c-cl:#3987e5; --c-seg:#199e70; --c-dist:#c98500; --c-reels:#d55181;
+    --c-prev:#6E6156; --soft:#2A221C; --track:#2C241E; --good:#3fb950; --bad:#f06a6a;
   }
 }
 :root[data-theme="dark"]{
   --bg:#16120F; --surface:#211B17; --line:#352C25;
   --text:#FFFFFF; --text-2:#CFC3B7; --muted:#998B7E;
-  --c-start:#d95926; --c-cl:#3987e5; --soft:#2A221C; --good:#3fb950; --bad:#f06a6a;
+  --c-start:#d95926; --c-cl:#3987e5; --c-seg:#199e70; --c-dist:#c98500; --c-reels:#d55181;
+  --c-prev:#6E6156; --soft:#2A221C; --track:#2C241E; --good:#3fb950; --bad:#f06a6a;
 }
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--text);font-family:"DM Sans",system-ui,sans-serif;font-size:15px;line-height:1.5}
@@ -36,10 +39,13 @@ header .wrap{display:flex;align-items:center;gap:20px;padding-top:28px;padding-b
 header h1{margin:0;font-size:24px;line-height:1.2}
 header p{margin:2px 0 0;opacity:.9;font-size:14px}
 
+.aviso{margin-top:20px;background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--brand);border-radius:10px;padding:12px 16px;font-size:14px;color:var(--text-2)}
+.aviso b{color:var(--text)}
+
 h2{font-size:20px;margin:40px 0 4px}
 .sub{color:var(--text-2);margin:0 0 16px;font-size:14px}
 
-.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:24px}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:20px}
 .kpi{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px}
 .kpi .lbl{color:var(--text-2);font-size:13px}
 .kpi .val{font-size:26px;font-weight:700;font-variant-numeric:tabular-nums}
@@ -47,39 +53,72 @@ h2{font-size:20px;margin:40px 0 4px}
 .kpi.hero{background:var(--brand);border-color:var(--brand);color:var(--brand-ink)}
 .kpi.hero .lbl,.kpi.hero .note{color:var(--brand-ink);opacity:.9}
 
-.projetos{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-@media (max-width:880px){.projetos{grid-template-columns:1fr}}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px}
+
+/* Distribuição */
+.split{display:flex;height:22px;border-radius:6px;overflow:hidden;gap:2px;margin:4px 0 16px}
+.split div{height:100%;transition:opacity .15s}
+.split:hover div:not(:hover){opacity:.45}
+.split-legend{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px}
+.sl{display:flex;gap:10px;align-items:flex-start}
+.sl i{width:12px;height:12px;border-radius:3px;margin-top:5px;flex:none}
+.sl .t{font-size:13px;color:var(--text-2)}
+.sl .v{font-weight:700;font-variant-numeric:tabular-nums}
+.sl .p{font-size:12px;color:var(--muted)}
+
+/* Colunas */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media (max-width:880px){.duo{grid-template-columns:1fr}}
 .proj{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px;border-top:5px solid var(--c)}
 .proj .tag{font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--text-2)}
-.proj h3{margin:2px 0 14px;font-size:20px}
+.proj h3{margin:2px 0 4px;font-size:20px}
+.proj .desc{color:var(--text-2);font-size:14px;margin:0 0 14px}
 .nums{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:22px}
 .num{background:var(--bg);border-radius:10px;padding:10px 12px}
 .num .l{font-size:12px;color:var(--text-2)}
 .num .v{font-size:18px;font-weight:700;font-variant-numeric:tabular-nums}
-.num .v.pos{color:var(--good)}
+.num .v.pos{color:var(--good)} .num .v.neg{color:var(--bad)}
 
 /* Funil */
-.funil{display:flex;flex-direction:column;align-items:center;gap:0}
-.etapa{position:relative;width:100%;display:flex;flex-direction:column;align-items:center}
-.faixa{height:58px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;clip-path:polygon(0 0,100% 0,calc(100% - 18px) 100%,18px 100%);transition:filter .15s;cursor:default}
-.faixa:hover{filter:brightness(1.08)}
+.funil{display:flex;flex-direction:column;align-items:center}
+.etapa{width:100%;display:flex;justify-content:center}
+.faixa{height:56px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;clip-path:polygon(0 0,100% 0,calc(100% - 18px) 100%,18px 100%);cursor:default}
 .faixa .n{font-size:20px;font-weight:700;line-height:1.1;font-variant-numeric:tabular-nums}
 .faixa .e{font-size:12px;opacity:.95}
-.faixa.zero{background:var(--soft)!important;color:var(--text-2);clip-path:none;border:1px dashed var(--line);border-radius:8px}
-.passo{font-size:12px;color:var(--text-2);padding:5px 0;display:flex;gap:10px;align-items:center}
+.faixa.zero{background:var(--soft)!important;color:var(--bad);clip-path:none;border:1px dashed var(--bad);border-radius:8px;opacity:1!important}
+.passo{font-size:12px;color:var(--text-2);padding:5px 0;display:flex;gap:8px;align-items:center;flex-wrap:wrap;justify-content:center}
 .passo b{color:var(--text);font-variant-numeric:tabular-nums}
 .passo .custo{color:var(--muted)}
+.passo.alerta b{color:var(--bad)}
 
-.proj h4{font-size:14px;margin:24px 0 10px}
-.cri{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
-.cri li{display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:center;background:var(--bg);border-radius:10px;padding:10px 12px}
-.cri .rank{background:var(--c);color:#fff;font-weight:700;font-size:12px;border-radius:999px;min-width:32px;text-align:center;padding:2px 8px}
-.cri .nm{font-size:14px;font-weight:500}
-.cri .det{font-size:12px;color:var(--text-2);text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+/* Comparação */
+.cmp{display:flex;flex-direction:column;gap:14px}
+.cr{display:grid;grid-template-columns:170px 1fr;gap:12px;align-items:center}
+@media (max-width:600px){.cr{grid-template-columns:1fr}}
+.cr .lb{font-size:13px;color:var(--text-2)}
+.cr .lb b{display:block;color:var(--text);font-size:14px}
+.pair{display:flex;flex-direction:column;gap:4px}
+.br{display:grid;grid-template-columns:1fr 92px;gap:8px;align-items:center;font-size:13px;font-variant-numeric:tabular-nums}
+.br .t{height:14px}
+.br .t div{height:100%;border-radius:0 4px 4px 0;min-width:2px}
+.br span{text-align:right;font-weight:500}
+.legend{display:flex;gap:16px;flex-wrap:wrap;font-size:13px;color:var(--text-2);margin-bottom:16px}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend i{width:10px;height:10px;border-radius:3px}
+.var{font-size:12px;font-weight:700;margin-left:6px}
+.var{color:var(--text-2)} .var.up{color:var(--good)} .var.down{color:var(--bad)}
+
+/* Tabela */
+.tbl-wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:13px;font-variant-numeric:tabular-nums}
+th,td{padding:10px 8px;text-align:right;border-bottom:1px solid var(--line);white-space:nowrap}
+th:first-child,td:first-child{text-align:left;white-space:normal;min-width:200px}
+th{color:var(--text-2);font-weight:500;font-size:12px}
+tr.total td{font-weight:700;border-bottom:none}
 
 .insights{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
 .ins{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;border-top:4px solid var(--brand)}
-.ins.bad{border-top-color:var(--bad)} .ins.good{border-top-color:var(--good)}
+.ins.good{border-top-color:var(--good)} .ins.bad{border-top-color:var(--bad)}
 .ins .k{font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--text-2)}
 .ins h4{margin:4px 0 6px;font-size:15px}
 .ins p{margin:0;color:var(--text-2);font-size:14px}
@@ -95,72 +134,114 @@ footer{color:var(--muted);font-size:12px;margin-top:32px}
     <!-- Para usar a logo: troque o span por <img src="logo-comunidade-leal.png" alt="Comunidade Leal" style="height:56px"> -->
     <span class="logo-text">Comunidade Leal</span>
     <div>
-      <h1>Funis de Vendas</h1>
-      <p>Meta Ads · 2 a 8 de outubro de 2026</p>
+      <h1>Relatório Semanal de Tráfego</h1>
+      <p>Meta Ads · 9 a 15 de outubro de 2026</p>
     </div>
   </div>
 </header>
 
 <main class="wrap">
 
+  <div class="aviso"><b>Semana atípica.</b> O feriado de 12 de outubro reduziu o volume de compras. Os números devem ser lidos com essa ressalva.</div>
+
   <section class="kpis" id="kpis"></section>
 
+  <h2>Onde o investimento foi aplicado</h2>
+  <p class="sub">Total da semana dividido por objetivo.</p>
+  <div class="card">
+    <div class="split" id="split"></div>
+    <div class="split-legend" id="split-legend"></div>
+  </div>
+
   <h2>Funil por produto</h2>
-  <p class="sub">Da pessoa alcançada até a compra. Entre cada etapa aparece a taxa de passagem e o custo de cada resultado.</p>
-  <div class="projetos" id="projetos"></div>
+  <p class="sub">Da pessoa alcançada até a compra. Entre as etapas aparecem a taxa de passagem e o custo de cada resultado.</p>
+  <div class="duo" id="produtos"></div>
+
+  <h2>Start 25: semana passada x esta semana</h2>
+  <p class="sub">Comparação do funil do Start 25 entre as duas últimas semanas. Nesta semana, com a Página V2.</p>
+  <div class="card">
+    <div class="legend">
+      <span><i style="background:var(--c-prev)"></i>2 a 8 de outubro</span>
+      <span><i style="background:var(--c-start)"></i>9 a 15 de outubro</span>
+    </div>
+    <div class="cmp" id="cmp-semana"></div>
+  </div>
+
+
+  <h2>Seguidores e distribuição de conteúdo</h2>
+  <p class="sub">Nesta semana o investimento em seguidores aumentou, como preparação para a Black Friday.</p>
+  <div class="card tbl-wrap"><table id="tbl-seg"></table></div>
 
   <h2>Leitura da semana</h2>
-  <div class="insights" id="insights">
-    <div class="ins good">
-      <div class="k">✓ Start 25</div>
-      <h4>5 vendas a R$ 38,52 cada</h4>
-      <p>O produto gerou 19 checkouts, o maior volume da semana. De cada 4 pessoas que iniciaram o checkout, 1 comprou.</p>
+  <div class="insights">
+    <div class="ins bad">
+      <div class="k">✕ Start 25</div>
+      <h4>Semana sem vendas</h4>
+      <p>Testamos a página com VSL e ela não funcionou. Voltamos para a página antiga. Dos 5 checkouts iniciados, nenhum virou venda.</p>
     </div>
     <div class="ins good">
       <div class="k">✓ Comunidade Leal</div>
-      <h4>1 venda e retorno de 3,09x</h4>
-      <p>Com R$ 160,82 investidos, uma venda de R$ 497 já pagou a semana. 81% de quem clica chega até a página.</p>
+      <h4>2 vendas com participação do tráfego</h4>
+      <p>R$ 363,99 investidos, 142 visitas à página e 17 checkouts iniciados. Cada venda pelo tráfego custou R$ 182,00.</p>
     </div>
-    <div class="ins">
-      <div class="k">Comunidade Leal</div>
-      <h4>"Mais barato que" puxa o tráfego</h4>
-      <p>Esse vídeo trouxe 26 visitas à página e 2 checkouts. Junto com o stories "Vai abrir a comunidade?", concentra quase todo o interesse de compra.</p>
+    <div class="ins good">
+      <div class="k">✓ Seguidores</div>
+      <h4>175 novos seguidores na semana</h4>
+      <p>"Na maioria das vezes" trouxe 95 seguidores a R$ 1,22 cada. É o criativo com mais escala no momento.</p>
     </div>
   </div>
 
-  <footer>Fonte: Gerenciador de Anúncios Meta, campanhas com a tag de cada produto. Faturamento calculado pelo valor do produto: Start 25 a R$ 99 e Comunidade Leal a R$ 497. O teste de Reels (R$ 28,47) não entra nos funis.</footer>
+  <h2>Próxima semana</h2>
+  <div class="insights">
+    <div class="ins">
+      <div class="k">Start 25</div>
+      <h4>Reestruturar a campanha</h4>
+      <p>Refazer a estrutura da campanha do Start 25 usando a página antiga.</p>
+    </div>
+    <div class="ins">
+      <div class="k">Black Friday</div>
+      <h4>Seguir com foco em seguidores</h4>
+      <p>Continuar investindo nas campanhas de seguidores para chegar à Black Friday com um público maior e mais aquecido.</p>
+    </div>
+  </div>
+
+  <footer>Fonte: Gerenciador de Anúncios Meta. O alcance da Comunidade Leal é a soma das duas campanhas. Vendas confirmadas pela cliente.</footer>
 </main>
 
 <div id="tip"></div>
 
 <script>
-/* ===== Dados de 2 a 8 de outubro/2026 ===== */
-const TOTAL = { investimento: 381.89, testeReels: 28.47 };
+/* ===== Dados de 9 a 15 de outubro/2026 ===== */
+const RESUMO = { investimento:748.06, seguidores:175, vendasCL:5, vendasAnuncio:2 };
 
-const PROJETOS = [
-  {
-    nome:"Start 25", cor:"var(--c-start)", preco:99,
-    investimento:192.60, cpm:26.55,
-    funil:{ alcance:3658, cliques:124, pagina:97, checkout:19, compras:5 },
-    criativosTitulo:"Criativos com venda rastreada pelo pixel",
-    criativos:[
-      {nome:"Amo fartura",          det:"1 venda · R$ 11,66"},
-      {nome:"Filha carrapato",      det:"1 venda · R$ 20,57"},
-      {nome:"Compulsão",            det:"1 venda · R$ 27,97"},
-      {nome:"Com antes e depois",   det:"1 venda · R$ 51,65"}
-    ]
-  },
-  {
-    nome:"Comunidade Leal", cor:"var(--c-cl)", preco:497,
-    investimento:160.82, cpm:18.92,
-    funil:{ alcance:3825, cliques:80, pagina:65, checkout:5, compras:1 },
-    criativosTitulo:"Criativos com mais intenção de compra",
-    criativos:[
-      {nome:"Mais barato que",             det:"2 checkouts · 26 visitas"},
-      {nome:"Vai abrir a comunidade?",     det:"2 checkouts · 10 visitas"},
-      {nome:"Sincera",                     det:"1 checkout · 2 visitas"}
-    ]
-  }
+const GRUPOS = [
+  {nome:"Comunidade Leal", valor:363.99, cor:"var(--c-cl)", info:"2 vendas pelo tráfego"},
+  {nome:"Seguidores", valor:187.68, cor:"var(--c-seg)", info:"136 seguidores"},
+  {nome:"Start 25", valor:130.77, cor:"var(--c-start)", info:"0 vendas"},
+  {nome:"Distribuição de conteúdo", valor:48.08, cor:"var(--c-dist)", info:"21 seguidores"},
+  {nome:"Start 25 · Advantage+", valor:17.54, cor:"var(--c-reels)", info:"Campanha antiga, 0 vendas"}
+];
+
+const PRODUTOS = [
+  { nome:"Start 25", cor:"var(--c-start)", desc:"Campanha com a Página V2. A página com VSL foi testada, não funcionou e voltamos para a página antiga.",
+    investimento:130.77, cpm:29.65, vendas:0,
+    funil:{ alcance:3112, cliques:78, pagina:54, checkout:5, compras:0 } },
+  { nome:"Comunidade Leal", cor:"var(--c-cl)", desc:"5 vendas na semana, 2 delas com participação do tráfego.",
+    investimento:363.99, cpm:24.90, vendas:2,
+    funil:{ alcance:8208, cliques:189, pagina:142, checkout:17, compras:2 } }
+];
+
+const SEMANAS = {
+  anterior:{ investimento:192.60, alcance:3658, cliques:124, pagina:97, checkout:19, compras:5 },
+  atual:   { investimento:130.77, alcance:3112, cliques:78,  pagina:54,  checkout:5,  compras:0 }
+};
+
+
+const SEGUIDORES = [
+  {n:"Reels · Na maioria das vezes", tipo:"Seguidores", gasto:115.95, alcance:22235, seg:95},
+  {n:"Reels · Uma das piores coisas", tipo:"Seguidores", gasto:40.99, alcance:3470, seg:39},
+  {n:"Reels · A gente nunca perde por se cuidar", tipo:"Seguidores", gasto:30.74, alcance:1102, seg:2},
+  {n:"Distribuição · Melhores conteúdos", tipo:"Distribuição", gasto:48.08, alcance:9152, seg:21}
 ];
 
 /* ===== Utilidades ===== */
@@ -178,59 +259,88 @@ function bindTip(el, html){
 }
 
 /* ===== KPIs ===== */
-const vendas = PROJETOS.reduce((a,p)=>a+p.funil.compras,0);
 document.getElementById("kpis").innerHTML = [
-  {l:"Investimento", v:brl(TOTAL.investimento), n:"Total da semana", hero:true},
-  {l:"Vendas", v:vendas, n:PROJETOS.map(p=>`${p.funil.compras} ${p.nome}`).join(" · "), hero:true},
-  {l:"Pessoas alcançadas", v:num(PROJETOS.reduce((a,p)=>a+p.funil.alcance,0)), n:"Soma dos dois produtos"},
-  {l:"Checkouts iniciados", v:PROJETOS.reduce((a,p)=>a+p.funil.checkout,0), n:PROJETOS.map(p=>`${p.funil.checkout} ${p.nome}`).join(" · ")}
+  {l:"Investimento", v:brl(RESUMO.investimento), n:"Total da semana", hero:true},
+  {l:"Vendas Comunidade Leal", v:RESUMO.vendasCL, n:`${RESUMO.vendasAnuncio} com participação do tráfego`, hero:true},
+  {l:"Vendas Start 25", v:0, n:"Nenhuma venda confirmada"},
+  {l:"Novos seguidores", v:RESUMO.seguidores, n:"Total da semana"},
+  {l:"Checkouts iniciados", v:22, n:"5 Start 25 · 17 Comunidade Leal"}
 ].map(k=>`<div class="kpi${k.hero?" hero":""}"><div class="lbl">${k.l}</div><div class="val">${k.v}</div><div class="note">${k.n}</div></div>`).join("");
 
-/* ===== Projetos e funis ===== */
-const ETAPAS = [
-  ["alcance","Pessoas alcançadas"],
-  ["cliques","Cliques no link"],
-  ["pagina","Visitas à página"],
-  ["checkout","Checkouts iniciados"],
-  ["compras","Compras"]
-];
-const LARGURAS = [100, 84, 68, 52, 38];
-const SING = {cliques:"clique", pagina:"visita", checkout:"checkout", compras:"venda"};
+/* ===== Distribuição ===== */
+const split = document.getElementById("split"), legend = document.getElementById("split-legend");
+GRUPOS.forEach(g=>{
+  const pct = g.valor/RESUMO.investimento*100;
+  const s = document.createElement("div"); s.style.cssText = `flex:${g.valor};background:${g.cor}`;
+  split.appendChild(s);
+  bindTip(s, `<b>${g.nome}</b><br>${brl(g.valor)} · ${dec(pct)}%<br>${g.info}`);
+  legend.insertAdjacentHTML("beforeend", `<div class="sl"><i style="background:${g.cor}"></i><div><div class="t">${g.nome}</div><div class="v">${brl(g.valor)}</div><div class="p">${dec(pct,0)}% · ${g.info}</div></div></div>`);
+});
 
-const box = document.getElementById("projetos");
-PROJETOS.forEach(p=>{
-  const f = p.funil, fat = f.compras * p.preco, roas = fat / p.investimento;
-  const el = document.createElement("article");
-  el.className = "proj"; el.style.setProperty("--c", p.cor);
-  el.innerHTML = `
-    <span class="tag">Produto</span>
-    <h3>${p.nome}</h3>
-    <div class="nums">
-      <div class="num"><div class="l">Investimento</div><div class="v">${brl(p.investimento)}</div></div>
-      <div class="num"><div class="l">Vendas</div><div class="v">${f.compras}</div></div>
-      <div class="num"><div class="l">Custo por venda</div><div class="v">${f.compras ? brl(p.investimento/f.compras) : "–"}</div></div>
-      <div class="num"><div class="l">CPM</div><div class="v">${brl(p.cpm)}</div></div>
-      <div class="num"><div class="l">Custo por checkout</div><div class="v">${brl(p.investimento/f.checkout)}</div></div>
-      <div class="num"><div class="l">Retorno (ROAS)</div><div class="v ${roas>=1?"pos":""}">${f.compras ? dec(roas,2)+"x" : "–"}</div></div>
-    </div>
-    <div class="funil"></div>
-    <h4>${p.criativosTitulo}</h4>
-    <ol class="cri">${p.criativos.map((c,i)=>`<li><span class="rank">${i+1}º</span><span class="nm">${c.nome}</span><span class="det">${c.det}</span></li>`).join("")}</ol>`;
-  const fun = el.querySelector(".funil");
+/* ===== Funil ===== */
+const ETAPAS = [["alcance","Pessoas alcançadas"],["cliques","Cliques no link"],["pagina","Visitas à página"],["checkout","Checkouts iniciados"],["compras","Compras"]];
+const SING = {cliques:"clique", pagina:"visita", checkout:"checkout", compras:"venda"};
+const LARG = [100,84,68,52,38];
+function desenhaFunil(alvo, f, inv, cor){
   ETAPAS.forEach(([k,label],i)=>{
     if(i>0){
       const prev = f[ETAPAS[i-1][0]], taxa = prev ? f[k]/prev*100 : 0;
-      const custo = f[k] ? `<span class="custo">· ${brl(p.investimento/f[k])} por ${SING[k]}</span>` : "";
-      fun.insertAdjacentHTML("beforeend", `<div class="passo">↓ <b>${dec(taxa)}%</b> seguiram ${custo}</div>`);
+      const custo = f[k] ? `<span class="custo">· ${brl(inv/f[k])} por ${SING[k]}</span>` : "";
+      alvo.insertAdjacentHTML("beforeend", `<div class="passo${f[k]===0?" alerta":""}">↓ <b>${dec(taxa)}%</b> seguiram ${custo}</div>`);
     }
-    const etapa = document.createElement("div"); etapa.className = "etapa";
-    const zero = f[k] === 0;
-    etapa.innerHTML = `<div class="faixa${zero?" zero":""}" style="width:${LARGURAS[i]}%;background:${p.cor};opacity:${zero?1:(1 - i*0.1)}"><span class="n">${num(f[k])}</span><span class="e">${label}</span></div>`;
-    fun.appendChild(etapa);
-    bindTip(etapa.firstChild, `<b>${label}</b><br>${num(f[k])}${f[k]?`<br>Custo: ${brl(p.investimento/f[k])} cada`:""}<br>${dec(f[k]/f.alcance*100,2)}% do alcance`);
+    const zero = f[k]===0;
+    const et = document.createElement("div"); et.className = "etapa";
+    et.innerHTML = `<div class="faixa${zero?" zero":""}" style="width:${LARG[i]}%;background:${cor};opacity:${1-i*0.1}"><span class="n">${num(f[k])}</span><span class="e">${label}</span></div>`;
+    alvo.appendChild(et);
+    bindTip(et.firstChild, `<b>${label}</b><br>${num(f[k])}${f[k]?`<br>${brl(inv/f[k])} cada`:""}`);
   });
-  box.appendChild(el);
-});
+}
+
+document.getElementById("produtos").innerHTML = PRODUTOS.map((p,i)=>{
+  const f = p.funil;
+  return `<article class="proj" style="--c:${p.cor}">
+    <span class="tag">Produto</span><h3>${p.nome}</h3><p class="desc">${p.desc}</p>
+    <div class="nums">
+      <div class="num"><div class="l">Investimento</div><div class="v">${brl(p.investimento)}</div></div>
+      <div class="num"><div class="l">Vendas pelo tráfego</div><div class="v ${p.vendas?"":"neg"}">${p.vendas}</div></div>
+      <div class="num"><div class="l">Custo por venda</div><div class="v">${p.vendas?brl(p.investimento/p.vendas):"–"}</div></div>
+      <div class="num"><div class="l">CPM</div><div class="v">${brl(p.cpm)}</div></div>
+      <div class="num"><div class="l">Custo por checkout</div><div class="v">${brl(p.investimento/f.checkout)}</div></div>
+      <div class="num"><div class="l">Visitas à página</div><div class="v">${num(f.pagina)}</div></div>
+    </div>
+    <div class="funil" data-i="${i}"></div></article>`;
+}).join("");
+document.querySelectorAll("#produtos .funil").forEach(el=>{ const p = PRODUTOS[el.dataset.i]; desenhaFunil(el, p.funil, p.investimento, p.cor); });
+
+/* ===== Comparação entre semanas ===== */
+const A = SEMANAS.anterior, B = SEMANAS.atual;
+const LINHAS = [
+  ["Investimento", a=>a.investimento, brl, null],
+  ["Visitas à página", a=>a.pagina, num, true],
+  ["Checkouts iniciados", a=>a.checkout, num, true],
+  ["Compras", a=>a.compras, num, true],
+  ["Visita → checkout", a=>a.checkout/a.pagina*100, v=>dec(v)+"%", true, "Quantas visitas viraram checkout"],
+  ["Custo por checkout", a=>a.investimento/a.checkout, brl, false, "Quanto menor, melhor"]
+];
+document.getElementById("cmp-semana").innerHTML = LINHAS.map(([lb,fn,fmt,maiorMelhor,dica])=>{
+  const va = fn(A), vb = fn(B), max = Math.max(va,vb) || 1;
+  let varTxt = "";
+  if(va){ const d = (vb-va)/va*100, bom = maiorMelhor===null ? null : (maiorMelhor ? d>=0 : d<=0);
+    varTxt = `<span class="var ${bom===null?"":(bom?"up":"down")}">${d>=0?"+":""}${dec(d,0)}%</span>`; }
+  return `<div class="cr"><div class="lb"><b>${lb}${varTxt}</b>${dica||""}</div>
+    <div class="pair">
+      <div class="br"><div class="t"><div style="width:${va/max*100}%;background:var(--c-prev)"></div></div><span>${fmt(va)}</span></div>
+      <div class="br"><div class="t"><div style="width:${vb/max*100}%;background:var(--c-start)"></div></div><span>${fmt(vb)}</span></div>
+    </div></div>`;
+}).join("");
+
+
+/* ===== Seguidores ===== */
+const tS = SEGUIDORES.reduce((a,c)=>({gasto:a.gasto+c.gasto,alcance:a.alcance+c.alcance,seg:a.seg+c.seg}),{gasto:0,alcance:0,seg:0});
+const ln = (n,tipo,c,cls="") => `<tr class="${cls}"><td>${n}</td><td>${tipo}</td><td>${brl(c.gasto)}</td><td>${num(c.alcance)}</td><td>${c.seg}</td><td>${brl(c.gasto/c.seg)}</td></tr>`;
+document.getElementById("tbl-seg").innerHTML =
+  `<thead><tr><th>Campanha</th><th>Tipo</th><th>Gasto</th><th>Alcance</th><th>Seguidores</th><th>Custo/seguidor</th></tr></thead><tbody>` +
+  SEGUIDORES.map(c=>ln(c.n,c.tipo,c)).join("") + ln("Total das campanhas","",tS,"total") + `</tbody>`;
 </script>
 </body>
 </html>
