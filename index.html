@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Comunidade Leal · 16 a 22 de outubro</title>
+<title>Comunidade Leal · 23 a 29 de outubro</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap" rel="stylesheet">
 <style>
@@ -117,6 +117,11 @@ h2{font-size:20px;margin:40px 0 4px}
 .cri .nm small{display:block;font-weight:400;font-size:12px;color:var(--text-2)}
 .cri .novo{font-size:11px;font-weight:700;color:var(--c);border:1px solid var(--c);border-radius:999px;padding:1px 8px}
 
+.tops{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media (max-width:960px){.tops{grid-template-columns:1fr}}
+.cri .det{display:block;font-size:12px;font-weight:400;color:var(--text-2);font-variant-numeric:tabular-nums}
+.cri .fmt{font-size:11px;color:var(--text-2);border:1px solid var(--line);border-radius:999px;padding:1px 8px;white-space:nowrap}
+
 /* Tabela */
 .tbl-wrap{overflow-x:auto}
 table{width:100%;border-collapse:collapse;font-size:13px;font-variant-numeric:tabular-nums}
@@ -144,7 +149,7 @@ footer{color:var(--muted);font-size:12px;margin-top:32px}
     <span class="logo-text">Comunidade Leal</span>
     <div>
       <h1>Relatório Semanal de Tráfego</h1>
-      <p>Meta Ads · 16 a 22 de outubro de 2026</p>
+      <p>Meta Ads · 23 a 29 de outubro de 2026</p>
     </div>
   </div>
 </header>
@@ -160,90 +165,116 @@ footer{color:var(--muted);font-size:12px;margin-top:32px}
     <div class="split-legend" id="split-legend"></div>
   </div>
 
-  <h2>Vendas da semana por produto</h2>
-  <p class="sub">Vendas registradas na plataforma, com a receita líquida de cada produto.</p>
-  <div class="card tbl-wrap"><table id="tbl-vendas"></table></div>
+  <h2>Funis da semana</h2>
+  <p class="sub">Da pessoa alcançada até o resultado final. Entre as etapas aparecem a taxa de passagem e o custo de cada resultado.</p>
+  <div class="duo" id="funis"></div>
 
-  <h2>Funil do Start 25</h2>
-  <p class="sub">Da pessoa alcançada até a compra. Entre as etapas aparecem a taxa de passagem e o custo de cada resultado.</p>
+  <h2>Semana passada x esta semana</h2>
+  <p class="sub">Como a captação da Black e o Start 25 evoluíram.</p>
   <div class="duo">
-    <div id="produto"></div>
     <div class="card">
-      <h3 style="margin:0 0 4px;font-size:16px">Semana passada x esta semana</h3>
-      <p class="sub">Comparação do funil do Start 25.</p>
+      <h3 style="margin:0 0 4px;font-size:16px">Captação Black</h3><p class="sub">A semana passada teve só os primeiros dias da campanha. Por isso a comparação é por custo e taxa.</p>
       <div class="legend">
-        <span><i style="background:var(--c-prev)"></i>9 a 15 de outubro</span>
-        <span><i style="background:var(--c-start)"></i>16 a 22 de outubro</span>
+        <span><i style="background:var(--c-prev)"></i>16 a 22 de outubro</span>
+        <span><i style="background:var(--c-dist)"></i>23 a 29 de outubro</span>
       </div>
-      <div class="cmp" id="cmp-semana"></div>
+      <div class="cmp" id="cmp-black"></div>
+    </div>
+    <div class="card">
+      <h3 style="margin:0 0 12px;font-size:16px">Start 25</h3>
+      <div class="legend">
+        <span><i style="background:var(--c-prev)"></i>16 a 22 de outubro</span>
+        <span><i style="background:var(--c-start)"></i>23 a 29 de outubro</span>
+      </div>
+      <div class="cmp" id="cmp-start"></div>
     </div>
   </div>
 
-  <h2>Seguidores e preparação para a Black</h2>
-  <p class="sub">Campanhas para crescer o perfil e captar o público da Black Friday.</p>
+  <h2>Melhores criativos</h2>
+  <p class="sub">Ranking dos anúncios dos últimos 30 dias (30 de setembro a 29 de outubro), separados pelo objetivo de cada campanha.</p>
+  <div class="tops" id="tops"></div>
+
+  <h2>Seguidores</h2>
+  <p class="sub">Campanha para crescer o perfil antes da Black.</p>
   <div class="card tbl-wrap"><table id="tbl-seg"></table></div>
 
   <h2>Leitura da semana</h2>
   <div class="insights">
     <div class="ins good">
-      <div class="k">✓ Start 25</div>
-      <h4>2 vendas com R$ 57,40 investidos</h4>
-      <p>A receita líquida foi de R$ 178,02, cerca de 3 vezes o investimento. Cada checkout custou R$ 7,18, contra R$ 26,15 na semana passada.</p>
+      <div class="k">✓ Captação Black</div>
+      <h4>66 cadastros a R$ 6,15 cada</h4>
+      <p>Primeira semana completa da captação. O custo por cadastro caiu em relação aos primeiros dias, quando estava em R$ 7,28. De cada 4 pessoas que chegaram à página, 1 se cadastrou.</p>
+    </div>
+    <div class="ins">
+      <div class="k">Start 25</div>
+      <h4>1 venda registrada pelo pixel</h4>
+      <p>R$ 114,50 investidos, 53 visitas à página e 5 checkouts iniciados.</p>
     </div>
     <div class="ins good">
       <div class="k">✓ Seguidores</div>
-      <h4>"Uma das piores coisas" trouxe 85 seguidores</h4>
-      <p>Cada seguidor custou R$ 1,18. Foi a campanha com mais verba na semana, como parte da preparação para a Black.</p>
-    </div>
-    <div class="ins">
-      <div class="k">Black Friday</div>
-      <h4>Captação começou a rodar</h4>
-      <p>A campanha para quem interagiu com o perfil nos últimos 180 dias gerou os primeiros 2 cadastros, a R$ 7,28 cada.</p>
-    </div>
-    <div class="ins">
-      <div class="k">Outros produtos</div>
-      <h4>Vendas sem anúncio ativo</h4>
-      <p>Comunidade Leal, cardápios de marmitas e cafés da manhã tiveram 1 venda cada, sem campanha de tráfego para esses produtos na semana.</p>
+      <h4>"Uma das piores coisas" segue trazendo seguidores</h4>
+      <p>74 novos seguidores a R$ 1,41 cada, com 8,9 mil pessoas alcançadas.</p>
     </div>
   </div>
 
-  <footer>Fonte: Gerenciador de Anúncios Meta e relatório de vendas da plataforma. As vendas são o total da plataforma na semana e incluem vendas do orgânico. O pixel registrou 1 das 2 vendas do Start 25.</footer>
+  <footer>Fonte: Gerenciador de Anúncios Meta. A captação da Black soma os dois conjuntos da campanha Envolvimento 180D. Vendas do Start 25 conforme registro do pixel.</footer>
 </main>
 
 <div id="tip"></div>
 
 <script>
-/* ===== Dados de 16 a 22 de outubro/2026 ===== */
-const RESUMO = { investimento:175.04, seguidores:87, leads:2 };
-
-const VENDAS = [
-  {produto:"Programa Start 25", vendas:2, receita:178.02, anuncio:true},
-  {produto:"Comunidade Leal", vendas:1, receita:36.32, anuncio:false},
-  {produto:"40 cardápios de marmitas saudáveis", vendas:1, receita:25.94, anuncio:false},
-  {produto:"Cafés da manhã e lanches", vendas:1, receita:16.93, anuncio:false}
-];
+/* ===== Dados de 23 a 29 de outubro/2026 ===== */
+const RESUMO = { investimento:624.53, seguidores:82, leads:66, vendasStart:1 };
 
 const GRUPOS = [
-  {nome:"Seguidores", valor:101.23, cor:"var(--c-seg)", info:"86 seguidores"},
-  {nome:"Start 25", valor:57.40, cor:"var(--c-start)", info:"2 vendas"},
-  {nome:"Captação Black", valor:14.56, cor:"var(--c-dist)", info:"2 cadastros"},
-  {nome:"Distribuição de conteúdo", valor:1.85, cor:"var(--c-reels)", info:"22 cliques"}
+  {nome:"Captação Black", valor:405.75, cor:"var(--c-dist)", info:"66 cadastros"},
+  {nome:"Start 25", valor:114.50, cor:"var(--c-start)", info:"1 venda"},
+  {nome:"Seguidores", valor:104.28, cor:"var(--c-seg)", info:"74 seguidores"}
 ];
 
-const START = { nome:"Start 25", cor:"var(--c-start)", desc:"Campanhas Teste e Advantage+, com a página antiga.",
-  investimento:57.40, cpm:23.06, vendas:2, receita:178.02,
-  funil:{ alcance:1704, cliques:41, pagina:37, checkout:8, compras:2 } };
+const FUNIS = [
+  { nome:"Captação Black", tag:"Lista da Black Friday", cor:"var(--c-dist)", desc:"Público que interagiu com o perfil nos últimos 180 dias.",
+    investimento:405.75, cpm:18.52, final:"Cadastros", sing:"cadastro",
+    funil:{ alcance:9299, cliques:303, pagina:252, final:66 },
+    nums:f=>[["Investimento",brl(405.75)],["Cadastros",f.final],["Custo por cadastro",brl(405.75/f.final)],["CPM",brl(18.52)],["Visitas à página",f.pagina],["Página → cadastro",dec(f.final/f.pagina*100)+"%"]] },
+  { nome:"Start 25", tag:"Produto", cor:"var(--c-start)", desc:"Campanha Teste, com a página antiga.",
+    investimento:114.50, cpm:23.53, final:"Compras", sing:"venda",
+    funil:{ alcance:2531, cliques:76, pagina:53, checkout:5, final:1 },
+    nums:f=>[["Investimento",brl(114.50)],["Vendas",f.final],["Custo por venda",brl(114.50/f.final)],["CPM",brl(23.53)],["Custo por checkout",brl(114.50/f.checkout)],["Visitas à página",f.pagina]] }
+];
 
 const SEMANAS = {
-  anterior:{ investimento:130.77, pagina:54, checkout:5, compras:0 },
-  atual:   { investimento:57.40,  pagina:37, checkout:8, compras:2 }
+  black:{ anterior:{ investimento:14.56, pagina:13, leads:2 }, atual:{ investimento:405.75, pagina:252, leads:66 } },
+  start:{ anterior:{ investimento:57.40, pagina:37, checkout:8, compras:2 }, atual:{ investimento:114.50, pagina:53, checkout:5, compras:1 } }
 };
 
 const SEGUIDORES = [
-  {n:"Reels · Uma das piores coisas", tipo:"Seguidores", gasto:100.05, alcance:8032, res:85, un:"seguidores"},
-  {n:"Reels · Na maioria das vezes", tipo:"Seguidores", gasto:1.18, alcance:188, res:1, un:"seguidores"},
-  {n:"Distribuição · Melhores conteúdos", tipo:"Distribuição", gasto:1.85, alcance:377, res:0, un:"seguidores"},
-  {n:"Captação Black · Envolvimento 180 dias", tipo:"Captação", gasto:14.56, alcance:546, res:2, un:"cadastros"}
+  {n:"Reels · Uma das piores coisas", gasto:104.28, alcance:8908, cliques:352, seg:74}
+];
+
+/* Melhores criativos dos últimos 30 dias (export por anúncio) */
+const TOPS = [
+  { titulo:"Captação Black", sub:"Por número de cadastros", cor:"var(--c-dist)", itens:[
+    {n:"Chega de deixar para segunda", f:"Estático", det:"24 cadastros · R$ 5,52 cada"},
+    {n:"Entre no grupo", f:"Vídeo", det:"15 cadastros · R$ 7,47 cada"},
+    {n:"Momento certo", f:"Estático", det:"14 cadastros · R$ 4,95 cada"},
+    {n:"Black tutorial", f:"Vídeo", det:"5 cadastros · R$ 5,75 cada"},
+    {n:"Comunidade Leal chegando", f:"Estático", det:"5 cadastros · R$ 5,71 cada"}
+  ]},
+  { titulo:"Vendas", sub:"Por vendas registradas pelo pixel", cor:"var(--c-start)", itens:[
+    {n:"Com antes e depois", f:"Vídeo", det:"3 vendas · 12 checkouts · R$ 86,23 por venda"},
+    {n:"Amo fartura", f:"Vídeo", det:"1 venda · R$ 19,90"},
+    {n:"Estou há um ano fazendo tudo certinho", f:"Vídeo", det:"1 venda · R$ 30,33 · caixinha de perguntas"},
+    {n:"Filha carrapato", f:"Vídeo", det:"1 venda · R$ 38,75"},
+    {n:"Compulsão", f:"Vídeo", det:"1 venda · R$ 57,84"}
+  ]},
+  { titulo:"Seguidores", sub:"Por novos seguidores", cor:"var(--c-seg)", itens:[
+    {n:"Post: Para emagrecer não...", f:"Reels", det:"198 seguidores · R$ 1,24 cada"},
+    {n:"Post: Na maioria das vezes...", f:"Reels", det:"96 seguidores · R$ 1,22 cada"},
+    {n:"Coisas que fazem sentido", f:"Carrossel", det:"11 seguidores · R$ 3,80 cada"},
+    {n:"Como eu equilibro", f:"Vídeo", det:"5 seguidores · R$ 0,77 cada"},
+    {n:"Coisas que não indico", f:"Carrossel", det:"4 seguidores · R$ 0,92 cada"}
+  ]}
 ];
 
 /* ===== Utilidades ===== */
@@ -261,13 +292,11 @@ function bindTip(el, html){
 }
 
 /* ===== KPIs ===== */
-const totV = VENDAS.reduce((a,v)=>a+v.vendas,0), totR = VENDAS.reduce((a,v)=>a+v.receita,0);
 document.getElementById("kpis").innerHTML = [
   {l:"Investimento", v:brl(RESUMO.investimento), n:"Total da semana", hero:true},
-  {l:"Vendas na semana", v:totV, n:`${brl(totR)} de receita líquida`, hero:true},
-  {l:"Vendas Start 25", v:START.vendas, n:`${brl(START.investimento/START.vendas)} por venda`},
-  {l:"Novos seguidores", v:RESUMO.seguidores, n:"Vindos dos anúncios"},
-  {l:"Cadastros Black", v:RESUMO.leads, n:"Captação iniciada"}
+  {l:"Cadastros Black", v:RESUMO.leads, n:`${brl(405.75/RESUMO.leads)} por cadastro`, hero:true},
+  {l:"Vendas Start 25", v:RESUMO.vendasStart, n:"Registrada pelo pixel"},
+  {l:"Novos seguidores", v:RESUMO.seguidores, n:"Vindos dos anúncios"}
 ].map(k=>`<div class="kpi${k.hero?" hero":""}"><div class="lbl">${k.l}</div><div class="val">${k.v}</div><div class="note">${k.n}</div></div>`).join("");
 
 /* ===== Distribuição ===== */
@@ -280,71 +309,68 @@ GRUPOS.forEach(g=>{
   legend.insertAdjacentHTML("beforeend", `<div class="sl"><i style="background:${g.cor}"></i><div><div class="t">${g.nome}</div><div class="v">${brl(g.valor)}</div><div class="p">${dec(pct,0)}% · ${g.info}</div></div></div>`);
 });
 
-/* ===== Vendas por produto ===== */
-document.getElementById("tbl-vendas").innerHTML =
-  `<thead><tr><th>Produto</th><th>Vendas</th><th>Receita líquida</th><th>Anúncio ativo</th></tr></thead><tbody>` +
-  VENDAS.map(v=>`<tr><td>${v.produto}</td><td>${v.vendas}</td><td>${brl(v.receita)}</td><td>${v.anuncio?"Sim":"Não"}</td></tr>`).join("") +
-  `<tr class="total"><td>Total</td><td>${totV}</td><td>${brl(totR)}</td><td></td></tr></tbody>`;
-
-/* ===== Funil ===== */
-const ETAPAS = [["alcance","Pessoas alcançadas"],["cliques","Cliques no link"],["pagina","Visitas à página"],["checkout","Checkouts iniciados"],["compras","Compras"]];
-const SING = {cliques:"clique", pagina:"visita", checkout:"checkout", compras:"venda"};
+/* ===== Funis ===== */
 const LARG = [100,84,68,52,38];
-function desenhaFunil(alvo, f, inv, cor){
-  ETAPAS.forEach(([k,label],i)=>{
+function desenhaFunil(alvo, F){
+  const f = F.funil, inv = F.investimento;
+  const et = [["alcance","Pessoas alcançadas"],["cliques","Cliques no link"],["pagina","Visitas à página"]];
+  if(f.checkout!==undefined) et.push(["checkout","Checkouts iniciados"]);
+  et.push(["final",F.final]);
+  const sing = {cliques:"clique", pagina:"visita", checkout:"checkout", final:F.sing};
+  const larg = et.length===4 ? [100,80,60,42] : LARG;
+  et.forEach(([k,label],i)=>{
     if(i>0){
-      const prev = f[ETAPAS[i-1][0]], taxa = prev ? f[k]/prev*100 : 0;
-      const custo = f[k] ? `<span class="custo">· ${brl(inv/f[k])} por ${SING[k]}</span>` : "";
-      alvo.insertAdjacentHTML("beforeend", `<div class="passo${f[k]===0?" alerta":""}">↓ <b>${dec(taxa)}%</b> seguiram ${custo}</div>`);
+      const prev = f[et[i-1][0]], taxa = prev ? f[k]/prev*100 : 0;
+      alvo.insertAdjacentHTML("beforeend", `<div class="passo">↓ <b>${dec(taxa)}%</b> seguiram <span class="custo">· ${brl(inv/f[k])} por ${sing[k]}</span></div>`);
     }
-    const et = document.createElement("div"); et.className = "etapa";
-    et.innerHTML = `<div class="faixa${f[k]===0?" zero":""}" style="width:${LARG[i]}%;background:${cor};opacity:${1-i*0.1}"><span class="n">${num(f[k])}</span><span class="e">${label}</span></div>`;
-    alvo.appendChild(et);
-    bindTip(et.firstChild, `<b>${label}</b><br>${num(f[k])}${f[k]?`<br>${brl(inv/f[k])} cada`:""}`);
+    const d = document.createElement("div"); d.className = "etapa";
+    d.innerHTML = `<div class="faixa" style="width:${larg[i]}%;background:${F.cor};opacity:${1-i*0.1}"><span class="n">${num(f[k])}</span><span class="e">${label}</span></div>`;
+    alvo.appendChild(d);
+    bindTip(d.firstChild, `<b>${label}</b><br>${num(f[k])}<br>${brl(inv/f[k])} cada`);
   });
 }
-const p = START, f = p.funil;
-document.getElementById("produto").innerHTML = `<article class="proj" style="--c:${p.cor}">
-  <span class="tag">Produto</span><h3>${p.nome}</h3><p class="desc">${p.desc}</p>
-  <div class="nums">
-    <div class="num"><div class="l">Investimento</div><div class="v">${brl(p.investimento)}</div></div>
-    <div class="num"><div class="l">Vendas</div><div class="v">${p.vendas}</div></div>
-    <div class="num"><div class="l">Custo por venda</div><div class="v">${brl(p.investimento/p.vendas)}</div></div>
-    <div class="num"><div class="l">CPM</div><div class="v">${brl(p.cpm)}</div></div>
-    <div class="num"><div class="l">Custo por checkout</div><div class="v">${brl(p.investimento/f.checkout)}</div></div>
-    <div class="num"><div class="l">Retorno (receita)</div><div class="v pos">${dec(p.receita/p.investimento,2)}x</div></div>
-  </div>
-  <div class="funil"></div></article>`;
-desenhaFunil(document.querySelector("#produto .funil"), f, p.investimento, p.cor);
+document.getElementById("funis").innerHTML = FUNIS.map((F,i)=>`<article class="proj" style="--c:${F.cor}">
+  <span class="tag">${F.tag}</span><h3>${F.nome}</h3><p class="desc">${F.desc}</p>
+  <div class="nums">${F.nums(F.funil).map(([l,v])=>`<div class="num"><div class="l">${l}</div><div class="v">${v}</div></div>`).join("")}</div>
+  <div class="funil" data-i="${i}"></div></article>`).join("");
+document.querySelectorAll("#funis .funil").forEach(el=>desenhaFunil(el, FUNIS[el.dataset.i]));
 
-/* ===== Comparação ===== */
-const A = SEMANAS.anterior, B = SEMANAS.atual;
-const LINHAS = [
+/* ===== Comparações ===== */
+function compara(id, A, B, cor, linhas){
+  document.getElementById(id).innerHTML = linhas.map(([lb,fn,fmt,maiorMelhor,dica])=>{
+    const va = fn(A), vb = fn(B), max = Math.max(va,vb) || 1;
+    let varTxt = "";
+    if(va){ const d = (vb-va)/va*100, bom = maiorMelhor===null ? null : (maiorMelhor ? d>=0 : d<=0);
+      varTxt = `<span class="var ${bom===null?"":(bom?"up":"down")}">${d>=0?"+":""}${dec(d,0)}%</span>`; }
+    return `<div class="cr"><div class="lb"><b>${lb}${varTxt}</b>${dica||""}</div>
+      <div class="pair">
+        <div class="br"><div class="t"><div style="width:${va/max*100}%;background:var(--c-prev)"></div></div><span>${fmt(va)}</span></div>
+        <div class="br"><div class="t"><div style="width:${vb/max*100}%;background:${cor}"></div></div><span>${fmt(vb)}</span></div>
+      </div></div>`;
+  }).join("");
+}
+compara("cmp-black", SEMANAS.black.anterior, SEMANAS.black.atual, "var(--c-dist)", [
+  ["Custo por cadastro", a=>a.investimento/a.leads, brl, false, "Quanto menor, melhor"],
+  ["Página → cadastro", a=>a.leads/a.pagina*100, v=>dec(v)+"%", true]
+]);
+compara("cmp-start", SEMANAS.start.anterior, SEMANAS.start.atual, "var(--c-start)", [
   ["Investimento", a=>a.investimento, brl, null],
   ["Visitas à página", a=>a.pagina, num, true],
   ["Checkouts iniciados", a=>a.checkout, num, true],
   ["Compras", a=>a.compras, num, true],
-  ["Visita → checkout", a=>a.checkout/a.pagina*100, v=>dec(v)+"%", true, "Quantas visitas viraram checkout"],
-  ["Custo por checkout", a=>a.investimento/a.checkout, brl, false, "Quanto menor, melhor"]
-];
-document.getElementById("cmp-semana").innerHTML = LINHAS.map(([lb,fn,fmt,maiorMelhor,dica])=>{
-  const va = fn(A), vb = fn(B), max = Math.max(va,vb) || 1;
-  let varTxt = "";
-  if(va){ const d = (vb-va)/va*100, bom = maiorMelhor===null ? null : (maiorMelhor ? d>=0 : d<=0);
-    varTxt = `<span class="var ${bom===null?"":(bom?"up":"down")}">${d>=0?"+":""}${dec(d,0)}%</span>`; }
-  else if(vb){ varTxt = `<span class="var up">novo</span>`; }
-  return `<div class="cr"><div class="lb"><b>${lb}${varTxt}</b>${dica||""}</div>
-    <div class="pair">
-      <div class="br"><div class="t"><div style="width:${va/max*100}%;background:var(--c-prev)"></div></div><span>${fmt(va)}</span></div>
-      <div class="br"><div class="t"><div style="width:${vb/max*100}%;background:var(--c-start)"></div></div><span>${fmt(vb)}</span></div>
-    </div></div>`;
-}).join("");
+  ["Custo por venda", a=>a.investimento/a.compras, brl, false, "Quanto menor, melhor"]
+]);
 
-/* ===== Seguidores e captação ===== */
+/* ===== Melhores criativos ===== */
+document.getElementById("tops").innerHTML = TOPS.map(t=>`<article class="proj" style="--c:${t.cor}">
+  <span class="tag">${t.sub}</span><h3 style="margin-bottom:14px">${t.titulo}</h3>
+  <ol class="cri">${t.itens.map((c,i)=>`<li><span class="rank">${i+1}º</span><span class="nm">${c.n}<span class="det">${c.det}</span></span><span class="fmt">${c.f}</span></li>`).join("")}</ol>
+</article>`).join("");
+
+/* ===== Seguidores ===== */
 document.getElementById("tbl-seg").innerHTML =
-  `<thead><tr><th>Campanha</th><th>Tipo</th><th>Gasto</th><th>Alcance</th><th>Resultado</th><th>Custo por resultado</th></tr></thead><tbody>` +
-  SEGUIDORES.map(c=>`<tr><td>${c.n}</td><td>${c.tipo}</td><td>${brl(c.gasto)}</td><td>${num(c.alcance)}</td><td>${c.res} ${c.res===1?c.un.replace(/es$/,"").replace(/s$/,""):c.un}</td><td>${c.res?brl(c.gasto/c.res):"–"}</td></tr>`).join("") +
-  `</tbody>`;
+  `<thead><tr><th>Campanha</th><th>Gasto</th><th>Alcance</th><th>Cliques</th><th>Seguidores</th><th>Custo/seguidor</th></tr></thead><tbody>` +
+  SEGUIDORES.map(c=>`<tr><td>${c.n}</td><td>${brl(c.gasto)}</td><td>${num(c.alcance)}</td><td>${num(c.cliques)}</td><td>${c.seg}</td><td>${brl(c.gasto/c.seg)}</td></tr>`).join("") + `</tbody>`;
 </script>
 </body>
 </html>
