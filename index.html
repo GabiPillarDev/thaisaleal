@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Comunidade Leal · 23 a 29 de outubro</title>
+<title>Comunidade Leal · 30 de outubro a 5 de novembro</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap" rel="stylesheet">
 <style>
@@ -139,6 +139,13 @@ tr.total td{font-weight:700;border-bottom:none}
 
 #tip{position:fixed;pointer-events:none;background:var(--text);color:var(--bg);font-size:12px;padding:8px 10px;border-radius:8px;opacity:0;transition:opacity .1s;max-width:260px;z-index:10;line-height:1.4}
 footer{color:var(--muted);font-size:12px;margin-top:32px}
+.ads{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:12px}
+.ad{display:grid;grid-template-columns:auto 64px 1fr;gap:12px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:12px}
+.ad .rank{background:var(--c-cl);color:#fff;font-weight:700;font-size:12px;border-radius:999px;min-width:32px;text-align:center;padding:2px 8px}
+.ad img{width:64px;height:64px;object-fit:cover;border-radius:8px;display:block}
+.ad h4{margin:0 0 4px;font-size:14px;line-height:1.3}
+.ad .m{font-size:12px;color:var(--text-2);font-variant-numeric:tabular-nums}
+.ad .m b{color:var(--text)}
 </style>
 </head>
 <body>
@@ -149,12 +156,14 @@ footer{color:var(--muted);font-size:12px;margin-top:32px}
     <span class="logo-text">Comunidade Leal</span>
     <div>
       <h1>Relatório Semanal de Tráfego</h1>
-      <p>Meta Ads · 23 a 29 de outubro de 2026</p>
+      <p>Meta Ads · 30 de outubro a 5 de novembro de 2026</p>
     </div>
   </div>
 </header>
 
 <main class="wrap">
+
+  <div class="aviso"><b>Semana de abertura da Black.</b> A Comunidade Leal teve 44 vendas na plataforma. Os anúncios trabalharam junto com o lançamento no orgânico e no grupo.</div>
 
   <section class="kpis" id="kpis"></section>
 
@@ -165,116 +174,134 @@ footer{color:var(--muted);font-size:12px;margin-top:32px}
     <div class="split-legend" id="split-legend"></div>
   </div>
 
+  <h2>Vendas da semana por produto</h2>
+  <p class="sub">Vendas registradas na plataforma, com a receita líquida de cada produto.</p>
+  <div class="card tbl-wrap"><table id="tbl-vendas"></table></div>
+
   <h2>Funis da semana</h2>
   <p class="sub">Da pessoa alcançada até o resultado final. Entre as etapas aparecem a taxa de passagem e o custo de cada resultado.</p>
-  <div class="duo" id="funis"></div>
+  <div class="tops" id="funis"></div>
+
+  <h2>Criativos com vendas</h2>
+  <p class="sub">Anúncios da campanha de vendas da Black que tiveram compras, em ordem.</p>
+  <div class="ads" id="ads"></div>
 
   <h2>Semana passada x esta semana</h2>
-  <p class="sub">Como a captação da Black e o Start 25 evoluíram.</p>
-  <div class="duo">
+  <p class="sub">Como a captação, o Start 25 e os seguidores evoluíram.</p>
+  <div class="tops">
     <div class="card">
-      <h3 style="margin:0 0 4px;font-size:16px">Captação Black</h3><p class="sub">A semana passada teve só os primeiros dias da campanha. Por isso a comparação é por custo e taxa.</p>
-      <div class="legend">
-        <span><i style="background:var(--c-prev)"></i>16 a 22 de outubro</span>
-        <span><i style="background:var(--c-dist)"></i>23 a 29 de outubro</span>
-      </div>
+      <h3 style="margin:0 0 12px;font-size:16px">Captação Black</h3>
+      <div class="legend"><span><i style="background:var(--c-prev)"></i>23 a 29/out</span><span><i style="background:var(--c-dist)"></i>30/out a 5/nov</span></div>
       <div class="cmp" id="cmp-black"></div>
     </div>
     <div class="card">
       <h3 style="margin:0 0 12px;font-size:16px">Start 25</h3>
-      <div class="legend">
-        <span><i style="background:var(--c-prev)"></i>16 a 22 de outubro</span>
-        <span><i style="background:var(--c-start)"></i>23 a 29 de outubro</span>
-      </div>
+      <div class="legend"><span><i style="background:var(--c-prev)"></i>23 a 29/out</span><span><i style="background:var(--c-start)"></i>30/out a 5/nov</span></div>
       <div class="cmp" id="cmp-start"></div>
     </div>
+    <div class="card">
+      <h3 style="margin:0 0 12px;font-size:16px">Seguidores</h3>
+      <div class="legend"><span><i style="background:var(--c-prev)"></i>23 a 29/out</span><span><i style="background:var(--c-seg)"></i>30/out a 5/nov</span></div>
+      <div class="cmp" id="cmp-seg"></div>
+    </div>
   </div>
-
-  <h2>Melhores criativos</h2>
-  <p class="sub">Ranking dos anúncios dos últimos 30 dias (30 de setembro a 29 de outubro), separados pelo objetivo de cada campanha.</p>
-  <div class="tops" id="tops"></div>
-
-  <h2>Seguidores</h2>
-  <p class="sub">Campanha para crescer o perfil antes da Black.</p>
-  <div class="card tbl-wrap"><table id="tbl-seg"></table></div>
 
   <h2>Leitura da semana</h2>
   <div class="insights">
     <div class="ins good">
-      <div class="k">✓ Captação Black</div>
-      <h4>66 cadastros a R$ 6,15 cada</h4>
-      <p>Primeira semana completa da captação. O custo por cadastro caiu em relação aos primeiros dias, quando estava em R$ 7,28. De cada 4 pessoas que chegaram à página, 1 se cadastrou.</p>
+      <div class="k">✓ Black Comunidade Leal</div>
+      <h4>44 vendas e R$ 17.957,56 de receita líquida</h4>
+      <p>Com R$ 541,73 investidos, a campanha de vendas teve 15 compras registradas no gerenciador, a R$ 36,12 cada. Pelo que o gerenciador rastreou, cada R$ 1 investido voltou R$ 11,21.</p>
     </div>
-    <div class="ins">
-      <div class="k">Start 25</div>
-      <h4>1 venda registrada pelo pixel</h4>
-      <p>R$ 114,50 investidos, 53 visitas à página e 5 checkouts iniciados.</p>
+    <div class="ins good">
+      <div class="k">✓ Captação Black</div>
+      <h4>98 cadastros desde o início</h4>
+      <p>Na captação inteira, cada cadastro custou R$ 5,99. Nesta semana foram 30, a R$ 5,54 cada, o menor custo até agora.</p>
     </div>
     <div class="ins good">
       <div class="k">✓ Seguidores</div>
-      <h4>"Uma das piores coisas" segue trazendo seguidores</h4>
-      <p>74 novos seguidores a R$ 1,41 cada, com 8,9 mil pessoas alcançadas.</p>
+      <h4>Melhor semana do "Uma das piores coisas"</h4>
+      <p>116 novos seguidores a R$ 0,91 cada. Na semana passada foram 74 a R$ 1,41.</p>
+    </div>
+    <div class="ins">
+      <div class="k">Start 25</div>
+      <h4>1 venda com R$ 78,00 investidos</h4>
+      <p>O custo por venda caiu em relação à semana passada, quando foi de R$ 114,50. Com o público aquecido pela Black, a maior parte da verba ficou na Comunidade Leal.</p>
     </div>
   </div>
 
-  <footer>Fonte: Gerenciador de Anúncios Meta. A captação da Black soma os dois conjuntos da campanha Envolvimento 180D. Vendas do Start 25 conforme registro do pixel.</footer>
+  <h2>Pontos de atenção</h2>
+  <div class="insights">
+    <div class="ins">
+      <div class="k">Rastreamento</div>
+      <h4>Vendas de um produto aparecendo em outro</h4>
+      <p>A campanha Teste do Start 25 também entregou para a Comunidade Leal: R$ 100,96 e 5 das 6 compras foram dela. O evento de checkout também dispara mais vezes do que o número de visitas. Vale separar campanhas e eventos por produto.</p>
+    </div>
+    <div class="ins">
+      <div class="k">Público</div>
+      <h4>Frequência alta na campanha de vendas</h4>
+      <p>O público de quem interagiu com o perfil nos últimos 180 dias já viu os anúncios quase 3 vezes na semana. Para os próximos dias da Black, vale abrir um público mais amplo.</p>
+    </div>
+    <div class="ins">
+      <div class="k">Reembolso</div>
+      <h4>3,92% de reembolso na Comunidade Leal</h4>
+      <p>Ainda é um número baixo, mas vale acompanhar nas próximas semanas, com o volume maior de vendas.</p>
+    </div>
+  </div>
+
+  <footer>Fonte: Gerenciador de Anúncios Meta e relatório de vendas da plataforma. As vendas por produto são o total da plataforma e incluem orgânico, grupo e anúncios. As compras da Comunidade Leal são as registradas pelo gerenciador. O funil da captação soma todo o período da campanha, e o alcance é a soma das semanas. O Start 25 usa a venda da plataforma. A etapa de checkout foi retirada dos funis porque o evento está disparando mais vezes do que o número de visitas.</footer>
 </main>
 
 <div id="tip"></div>
 
 <script>
-/* ===== Dados de 23 a 29 de outubro/2026 ===== */
-const RESUMO = { investimento:624.53, seguidores:82, leads:66, vendasStart:1 };
+/* ===== Dados de 30/out a 5/nov de 2026 ===== */
+const RESUMO = { investimento:891.21, seguidores:128, leads:30, comprasGerenciador:17 };
 
 const GRUPOS = [
-  {nome:"Captação Black", valor:405.75, cor:"var(--c-dist)", info:"66 cadastros"},
-  {nome:"Start 25", valor:114.50, cor:"var(--c-start)", info:"1 venda"},
-  {nome:"Seguidores", valor:104.28, cor:"var(--c-seg)", info:"74 seguidores"}
+  {nome:"Comunidade Leal · Black", valor:541.73, cor:"var(--c-cl)", info:"15 compras no gerenciador"},
+  {nome:"Start 25", valor:78.00, cor:"var(--c-start)", info:"1 venda"},
+  {nome:"Captação Black", valor:166.23, cor:"var(--c-dist)", info:"30 cadastros"},
+  {nome:"Seguidores", valor:105.25, cor:"var(--c-seg)", info:"116 seguidores"}
+];
+
+const VENDAS = [
+  {produto:"Comunidade Leal", vendas:44, receita:17957.56, anuncio:"Sim · Black"},
+  {produto:"Palestre-se Elite 2027", vendas:13, receita:3627.55, anuncio:"Não"},
+  {produto:"Programa Start 25", vendas:1, receita:89.01, anuncio:"Sim"},
+  {produto:"Cafés da manhã e lanches", vendas:1, receita:16.93, anuncio:"Não"}
 ];
 
 const FUNIS = [
-  { nome:"Captação Black", tag:"Lista da Black Friday", cor:"var(--c-dist)", desc:"Público que interagiu com o perfil nos últimos 180 dias.",
-    investimento:405.75, cpm:18.52, final:"Cadastros", sing:"cadastro",
-    funil:{ alcance:9299, cliques:303, pagina:252, final:66 },
-    nums:f=>[["Investimento",brl(405.75)],["Cadastros",f.final],["Custo por cadastro",brl(405.75/f.final)],["CPM",brl(18.52)],["Visitas à página",f.pagina],["Página → cadastro",dec(f.final/f.pagina*100)+"%"]] },
-  { nome:"Start 25", tag:"Produto", cor:"var(--c-start)", desc:"Campanha Teste, com a página antiga.",
-    investimento:114.50, cpm:23.53, final:"Compras", sing:"venda",
-    funil:{ alcance:2531, cliques:76, pagina:53, checkout:5, final:1 },
-    nums:f=>[["Investimento",brl(114.50)],["Vendas",f.final],["Custo por venda",brl(114.50/f.final)],["CPM",brl(23.53)],["Custo por checkout",brl(114.50/f.checkout)],["Visitas à página",f.pagina]] }
+  { nome:"Vendas Black", tag:"Comunidade Leal", cor:"var(--c-cl)", desc:"Campanha de vendas da Comunidade Leal na abertura da Black.",
+    investimento:541.73, final:"Compras", sing:"compra",
+    funil:{ alcance:8781, cliques:273, pagina:215, final:15 },
+    nums:f=>[["Investimento",brl(541.73)],["Compras",f.final],["Custo por compra",brl(541.73/f.final)],["CPM",brl(18.17)],["Visitas à página",f.pagina],["Retorno (gerenciador)","11,21x"]] },
+  { nome:"Captação Black", tag:"Lista da Black Friday", cor:"var(--c-dist)", desc:"Captação completa, desde o início: 16 de outubro a 5 de novembro.",
+    investimento:586.54, final:"Cadastros", sing:"cadastro",
+    funil:{ alcance:13305, cliques:477, pagina:387, final:98 },
+    nums:f=>[["Investimento total",brl(586.54)],["Cadastros",f.final],["Custo por cadastro",brl(586.54/f.final)],["CPM",brl(21.91)],["Visitas à página",f.pagina],["Página → cadastro",dec(f.final/f.pagina*100)+"%"]] },
+  { nome:"Start 25", tag:"Produto", cor:"var(--c-start)", desc:"Nesta semana a campanha dividiu a entrega com a Comunidade Leal, por isso o funil do Start 25 não aparece separado.",
+    investimento:78.00, final:"Vendas", sing:"venda", semFunil:true,
+    funil:{ final:1 },
+    nums:f=>[["Investimento",brl(78.00)],["Vendas",f.final],["Custo por venda",brl(78.00/f.final)]] }
 ];
 
 const SEMANAS = {
-  black:{ anterior:{ investimento:14.56, pagina:13, leads:2 }, atual:{ investimento:405.75, pagina:252, leads:66 } },
-  start:{ anterior:{ investimento:57.40, pagina:37, checkout:8, compras:2 }, atual:{ investimento:114.50, pagina:53, checkout:5, compras:1 } }
+  black:{ anterior:{ investimento:405.75, pagina:252, leads:66 }, atual:{ investimento:166.23, pagina:122, leads:30 } },
+  start:{ anterior:{ investimento:114.50, compras:1 }, atual:{ investimento:78.00, compras:1 } },
+  seg:{ anterior:{ investimento:104.28, seg:74 }, atual:{ investimento:105.25, seg:116 } }
 };
 
-const SEGUIDORES = [
-  {n:"Reels · Uma das piores coisas", gasto:104.28, alcance:8908, cliques:352, seg:74}
-];
-
-/* Melhores criativos dos últimos 30 dias (export por anúncio) */
-const TOPS = [
-  { titulo:"Captação Black", sub:"Por número de cadastros", cor:"var(--c-dist)", itens:[
-    {n:"Chega de deixar para segunda", f:"Estático", det:"24 cadastros · R$ 5,52 cada"},
-    {n:"Entre no grupo", f:"Vídeo", det:"15 cadastros · R$ 7,47 cada"},
-    {n:"Momento certo", f:"Estático", det:"14 cadastros · R$ 4,95 cada"},
-    {n:"Black tutorial", f:"Vídeo", det:"5 cadastros · R$ 5,75 cada"},
-    {n:"Comunidade Leal chegando", f:"Estático", det:"5 cadastros · R$ 5,71 cada"}
-  ]},
-  { titulo:"Vendas", sub:"Por vendas registradas pelo pixel", cor:"var(--c-start)", itens:[
-    {n:"Com antes e depois", f:"Vídeo", det:"3 vendas · 12 checkouts · R$ 86,23 por venda"},
-    {n:"Amo fartura", f:"Vídeo", det:"1 venda · R$ 19,90"},
-    {n:"Estou há um ano fazendo tudo certinho", f:"Vídeo", det:"1 venda · R$ 30,33 · caixinha de perguntas"},
-    {n:"Filha carrapato", f:"Vídeo", det:"1 venda · R$ 38,75"},
-    {n:"Compulsão", f:"Vídeo", det:"1 venda · R$ 57,84"}
-  ]},
-  { titulo:"Seguidores", sub:"Por novos seguidores", cor:"var(--c-seg)", itens:[
-    {n:"Post: Para emagrecer não...", f:"Reels", det:"198 seguidores · R$ 1,24 cada"},
-    {n:"Post: Na maioria das vezes...", f:"Reels", det:"96 seguidores · R$ 1,22 cada"},
-    {n:"Coisas que fazem sentido", f:"Carrossel", det:"11 seguidores · R$ 3,80 cada"},
-    {n:"Como eu equilibro", f:"Vídeo", det:"5 seguidores · R$ 0,77 cada"},
-    {n:"Coisas que não indico", f:"Carrossel", det:"4 seguidores · R$ 0,92 cada"}
-  ]}
+/* Criativos com vendas (print do gerenciador, campanha Vendas Black) */
+const ADS = [
+  {n:"Tutorial", ctr:1.75, vis:9, cpv:2.86, compras:2, img:"data:image/jpeg;base64,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"},
+  {n:"Doces", ctr:1.75, vis:74, cpv:1.5, compras:2, img:"data:image/jpeg;base64,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"},
+  {n:"Tem tudo que precisa pra começar", ctr:1.66, vis:38, cpv:2.55, compras:2, img:"data:image/jpeg;base64,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"},
+  {n:"Não sei porque não emagreço", ctr:1.49, vis:18, cpv:2.49, compras:1, img:"data:image/jpeg;base64,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"},
+  {n:"O que tem na comunidade", ctr:1.37, vis:14, cpv:2.77, compras:1, img:"data:image/jpeg;base64,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"},
+  {n:"Frutas", ctr:2.08, vis:25, cpv:1.54, compras:1, img:"data:image/jpeg;base64,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"},
+  {n:"O que é a comunidade", ctr:0.45, vis:1, cpv:4.27, compras:1, img:"data:image/jpeg;base64,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"}
 ];
 
 /* ===== Utilidades ===== */
@@ -292,10 +319,12 @@ function bindTip(el, html){
 }
 
 /* ===== KPIs ===== */
+const cl = VENDAS[0];
 document.getElementById("kpis").innerHTML = [
   {l:"Investimento", v:brl(RESUMO.investimento), n:"Total da semana", hero:true},
-  {l:"Cadastros Black", v:RESUMO.leads, n:`${brl(405.75/RESUMO.leads)} por cadastro`, hero:true},
-  {l:"Vendas Start 25", v:RESUMO.vendasStart, n:"Registrada pelo pixel"},
+  {l:"Vendas Comunidade Leal", v:cl.vendas, n:`${brl(cl.receita)} de receita líquida`, hero:true},
+  {l:"Compras no gerenciador", v:RESUMO.comprasGerenciador, n:"Rastreadas pelos anúncios"},
+  {l:"Cadastros Black", v:98, n:`Captação inteira · ${brl(586.54/98)} cada`},
   {l:"Novos seguidores", v:RESUMO.seguidores, n:"Vindos dos anúncios"}
 ].map(k=>`<div class="kpi${k.hero?" hero":""}"><div class="lbl">${k.l}</div><div class="val">${k.v}</div><div class="note">${k.n}</div></div>`).join("");
 
@@ -309,15 +338,19 @@ GRUPOS.forEach(g=>{
   legend.insertAdjacentHTML("beforeend", `<div class="sl"><i style="background:${g.cor}"></i><div><div class="t">${g.nome}</div><div class="v">${brl(g.valor)}</div><div class="p">${dec(pct,0)}% · ${g.info}</div></div></div>`);
 });
 
+/* ===== Vendas por produto ===== */
+const totV = VENDAS.reduce((a,v)=>a+v.vendas,0), totR = VENDAS.reduce((a,v)=>a+v.receita,0);
+document.getElementById("tbl-vendas").innerHTML =
+  `<thead><tr><th>Produto</th><th>Vendas</th><th>Receita líquida</th><th>Anúncio ativo</th></tr></thead><tbody>` +
+  VENDAS.map(v=>`<tr><td>${v.produto}</td><td>${v.vendas}</td><td>${brl(v.receita)}</td><td>${v.anuncio}</td></tr>`).join("") +
+  `<tr class="total"><td>Total</td><td>${totV}</td><td>${brl(totR)}</td><td></td></tr></tbody>`;
+
 /* ===== Funis ===== */
-const LARG = [100,84,68,52,38];
 function desenhaFunil(alvo, F){
   const f = F.funil, inv = F.investimento;
-  const et = [["alcance","Pessoas alcançadas"],["cliques","Cliques no link"],["pagina","Visitas à página"]];
-  if(f.checkout!==undefined) et.push(["checkout","Checkouts iniciados"]);
-  et.push(["final",F.final]);
-  const sing = {cliques:"clique", pagina:"visita", checkout:"checkout", final:F.sing};
-  const larg = et.length===4 ? [100,80,60,42] : LARG;
+  const et = [["alcance","Pessoas alcançadas"],["cliques","Cliques no link"],["pagina","Visitas à página"],["final",F.final]];
+  const sing = {cliques:"clique", pagina:"visita", final:F.sing};
+  const larg = [100,80,60,42];
   et.forEach(([k,label],i)=>{
     if(i>0){
       const prev = f[et[i-1][0]], taxa = prev ? f[k]/prev*100 : 0;
@@ -332,8 +365,14 @@ function desenhaFunil(alvo, F){
 document.getElementById("funis").innerHTML = FUNIS.map((F,i)=>`<article class="proj" style="--c:${F.cor}">
   <span class="tag">${F.tag}</span><h3>${F.nome}</h3><p class="desc">${F.desc}</p>
   <div class="nums">${F.nums(F.funil).map(([l,v])=>`<div class="num"><div class="l">${l}</div><div class="v">${v}</div></div>`).join("")}</div>
-  <div class="funil" data-i="${i}"></div></article>`).join("");
-document.querySelectorAll("#funis .funil").forEach(el=>desenhaFunil(el, FUNIS[el.dataset.i]));
+  ${F.nota?`<p class="sub" style="margin:0 0 10px;text-align:center"><b>${F.nota}</b></p>`:""}<div class="funil" data-i="${i}"></div></article>`).join("");
+document.querySelectorAll("#funis .funil").forEach(el=>{ if(!FUNIS[el.dataset.i].semFunil) desenhaFunil(el, FUNIS[el.dataset.i]); });
+
+/* ===== Criativos com vendas ===== */
+document.getElementById("ads").innerHTML = ADS.map((a,i)=>`<div class="ad">
+  <span class="rank">${i+1}º</span><img src="${a.img}" alt="${a.n}">
+  <div><h4>${a.n}</h4><div class="m"><b>${a.compras} ${a.compras>1?"compras":"compra"}</b> · ${a.vis} ${a.vis===1?"visita":"visitas"} · CTR ${dec(a.ctr,2)}%</div></div>
+</div>`).join("");
 
 /* ===== Comparações ===== */
 function compara(id, A, B, cor, linhas){
@@ -350,27 +389,20 @@ function compara(id, A, B, cor, linhas){
   }).join("");
 }
 compara("cmp-black", SEMANAS.black.anterior, SEMANAS.black.atual, "var(--c-dist)", [
-  ["Custo por cadastro", a=>a.investimento/a.leads, brl, false, "Quanto menor, melhor"],
-  ["Página → cadastro", a=>a.leads/a.pagina*100, v=>dec(v)+"%", true]
+  ["Investimento", a=>a.investimento, brl, null],
+  ["Cadastros", a=>a.leads, num, null, "Verba foi para as vendas"],
+  ["Custo por cadastro", a=>a.investimento/a.leads, brl, false, "Quanto menor, melhor"]
 ]);
 compara("cmp-start", SEMANAS.start.anterior, SEMANAS.start.atual, "var(--c-start)", [
   ["Investimento", a=>a.investimento, brl, null],
-  ["Visitas à página", a=>a.pagina, num, true],
-  ["Checkouts iniciados", a=>a.checkout, num, true],
-  ["Compras", a=>a.compras, num, true],
+  ["Vendas", a=>a.compras, num, true],
   ["Custo por venda", a=>a.investimento/a.compras, brl, false, "Quanto menor, melhor"]
 ]);
-
-/* ===== Melhores criativos ===== */
-document.getElementById("tops").innerHTML = TOPS.map(t=>`<article class="proj" style="--c:${t.cor}">
-  <span class="tag">${t.sub}</span><h3 style="margin-bottom:14px">${t.titulo}</h3>
-  <ol class="cri">${t.itens.map((c,i)=>`<li><span class="rank">${i+1}º</span><span class="nm">${c.n}<span class="det">${c.det}</span></span><span class="fmt">${c.f}</span></li>`).join("")}</ol>
-</article>`).join("");
-
-/* ===== Seguidores ===== */
-document.getElementById("tbl-seg").innerHTML =
-  `<thead><tr><th>Campanha</th><th>Gasto</th><th>Alcance</th><th>Cliques</th><th>Seguidores</th><th>Custo/seguidor</th></tr></thead><tbody>` +
-  SEGUIDORES.map(c=>`<tr><td>${c.n}</td><td>${brl(c.gasto)}</td><td>${num(c.alcance)}</td><td>${num(c.cliques)}</td><td>${c.seg}</td><td>${brl(c.gasto/c.seg)}</td></tr>`).join("") + `</tbody>`;
+compara("cmp-seg", SEMANAS.seg.anterior, SEMANAS.seg.atual, "var(--c-seg)", [
+  ["Investimento", a=>a.investimento, brl, null],
+  ["Seguidores", a=>a.seg, num, true],
+  ["Custo por seguidor", a=>a.investimento/a.seg, brl, false, "Quanto menor, melhor"]
+]);
 </script>
 </body>
 </html>
