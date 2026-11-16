@@ -216,6 +216,9 @@ footer{color:var(--muted);font-size:12px;margin-top:32px}
     </div>
   </div>
 
+  <h2>Observação</h2>
+  <div class="aviso" style="margin-top:8px"><b>Comunidade Leal.</b> Nesta semana vou voltar a anunciar a Comunidade Leal como teste. Mas, pelo que vimos nas Black Fridays anteriores, as vendas costumam se concentrar no período de abertura, então a expectativa de volume agora é menor.</div>
+
   <h2>Pontos de atenção</h2>
   <div class="insights">
     <div class="ins">
@@ -293,6 +296,7 @@ function bindTip(el, html){
 const totV = VENDAS.reduce((a,v)=>a+v.vendas,0), totR = VENDAS.reduce((a,v)=>a+v.receita,0);
 document.getElementById("kpis").innerHTML = [
   {l:"Investimento", v:brl(RESUMO.investimento), n:"Total do período", hero:true},
+  {l:"Investido em novembro", v:brl(934.55), n:"Somatória do mês até agora", hero:true},
   {l:"Vendas na Hotmart", v:totV, n:`${brl(totR)} de receita líquida`, hero:true},
   {l:"Start 25", v:2, n:`${brl(100.84/2)} por venda`},
   {l:"E-book de marmitas", v:3, n:`${brl(103.34/3)} por venda`}
